@@ -12,6 +12,11 @@ namespace ShibaBot
 
         [JsonProperty("TelegramBotToken")]
         public string TelegramBotToken { get; set; }
+      
+        public static Config LoadConfig(string path)
+        {
+            Console.WriteLine("ShibaBot v1 by @penziaa");
+            Console.WriteLine();
 
         public static Config LoadConfig(string path)
         {
