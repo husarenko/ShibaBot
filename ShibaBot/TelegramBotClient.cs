@@ -13,29 +13,38 @@ using ShibaBot;
 class Program
 {
     static void Main(string[] args)
-    {   
-        var client = new TelegramBotClient("YOUR-API-BOT-TOKEN");
-        client.StartReceiving(Update, Error);
-
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"> Бота увiмкнено! ({DateTime.UtcNow} UTC)");
-        
-        while (true)
+    {
+        var config = Config.LoadConfig("config.json");
+        if (config != null)
         {
-            string exitKeyword = "exit";
+            var client = new TelegramBotClient(config.TelegramBotToken);
 
-            string input = Console.ReadLine();
+            client.StartReceiving(Update, Error);
 
-            if (input.ToLower() == exitKeyword)
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"> Бота увiмкнено! ({DateTime.UtcNow} UTC)");
+
+            while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"> Бота вимкнено! ({DateTime.UtcNow} UTC)");
-                break;
+                string exitKeyword = "exit";
+
+                string input = Console.ReadLine();
+
+                if (input.ToLower() == exitKeyword)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"> Бота вимкнено! ({DateTime.UtcNow} UTC)");
+                    break;
+                }
+                else
+                {
+                    Console.ReadLine();
+                }
             }
-            else
-            {
-                Console.ReadLine();
-            }
+        }
+        else
+        {
+            Console.WriteLine("Failed to load config. Exiting...");
         }
     }
 
