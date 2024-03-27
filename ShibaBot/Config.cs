@@ -12,17 +12,19 @@ namespace ShibaBot
 
         [JsonProperty("TelegramBotToken")]
         public string TelegramBotToken { get; set; }
-        
+      
         public static Config LoadConfig(string path)
         {
             Console.WriteLine("ShibaBot v1 by @penziaa");
             Console.WriteLine();
+
+        public static Config LoadConfig(string path)
+        {
             try
             {
                 string json = File.ReadAllText(path);
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("> Файл JSON (ваш ключ):");
-
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine(json);
                 Console.WriteLine();
