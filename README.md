@@ -3,6 +3,7 @@
 ## Використані бібліотеки/API
 - **https://shibe.online у якості API**;
 - **Telegram.Bot**;
+- **System.Net.Http**;
 - **Newtonsoft.Json**
 ## Build
 - Відкрийте `ShibaBot.sln` у **Visual Studio 2022** та збудуйте проект. **Повинна з'явитись новоутворена тека** `ShibaBot`.
